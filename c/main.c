@@ -21,8 +21,6 @@ int main(void) {
         memcpy(&key, &word, length + 1);
         qsort(key, length, sizeof(char), &cmpfunc);
         sht_insert(sortedletters, key, word);
-        sht_rehash(sortedletters, i++);
-        sht_dump(sortedletters);
     }
     fclose(fp);
 

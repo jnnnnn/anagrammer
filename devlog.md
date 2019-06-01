@@ -43,4 +43,8 @@ Follow https://www.40tude.fr/blog/compile-cpp-code-with-vscode-clang/ with a new
 
 Still got an obscure bug somewhere. `arches`, `chaser` and `search` all return `search` only. It is like the old values got lost during a rehash or add.
 
-Some other values work fine though;
+Some other values work fine though.
+
+I wrote a little dump function to print out the hash table. I noticed that sometimes the table was supposed to have two buckets after rehashing but it actually only had one -- the rehash was overwriting buckets, because it wasn't respecting the open addressing thing -- it just put the new bucket in at the calculated hash without checking if there was already a bucket there.
+
+With that fixed, the whole program works correctly. Ugh. It took me several hours to get all that code right.

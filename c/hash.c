@@ -49,7 +49,12 @@ void sht_rehash(HashTable *table, size_t newSize) {
     for (size_t i = 0; i < table->size; i++) {
         Bucket *bucket = &table->buckets[i];
         if (bucket->key) {
-            newbuckets[hash(bucket->key) % newSize] = *bucket;
+            // iterate until we find an empty bucket
+            unsigned long j = hash(bucket->key) % newSize;
+            while (newbuckets[j].key != NULL) {
+                j = (j + 1) % newSize;
+            }
+            newbuckets[j] = *bucket;
         }
     }
     free(table->buckets);
