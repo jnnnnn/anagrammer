@@ -24,7 +24,7 @@ The algorithm is:
 
 ## Languages
 
-| Language | Commands to build/run              |
-| -------- | ---------------------------------- |
-| Python   | `cd python; python server.py`      |
-| C++      | `cd c++; clang++ main.cpp; ./main` |
+| Language | Commands to build/run                      |
+| -------- | ------------------------------------------ |
+| Python   | `cd python; python server.py`              |
+| C++      | `cd c++; clang++ main.cpp -o main; ./main` |
