@@ -1,2 +1,6 @@
 .vscode
 c++/main
+*.pdb
+*.ilk
+c/main
+c/main.exe
