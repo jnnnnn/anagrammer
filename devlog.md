@@ -47,4 +47,12 @@ Some other values work fine though.
 
 I wrote a little dump function to print out the hash table. I noticed that sometimes the table was supposed to have two buckets after rehashing but it actually only had one -- the rehash was overwriting buckets, because it wasn't respecting the open addressing thing -- it just put the new bucket in at the calculated hash without checking if there was already a bucket there.
 
-With that fixed, the whole program works correctly. Ugh. It took me several hours to get all that code right.
+With that fixed, the whole program works correctly. Ugh. It took me several hours to get all that code right..
+
+Also ran clang-tidy and fixed most of the warnings. I'm mystified by the following warning:
+
+    c\hash.c:91:26: note: The result of the '' expression is undefined
+    size_t i = hash(key) % table->size;
+                         ^
+
+Everything here is a `size_t`. Why is it not ok to use modulus in this case?

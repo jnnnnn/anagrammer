@@ -1,5 +1,6 @@
 // String Hash Table (sht) maps a key string to a list of value strings.
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -50,7 +51,7 @@ void sht_rehash(HashTable *table, size_t newSize) {
         Bucket *bucket = &table->buckets[i];
         if (bucket->key) {
             // iterate until we find an empty bucket
-            unsigned long j = hash(bucket->key) % newSize;
+            size_t j = hash(bucket->key) % newSize;
             while (newbuckets[j].key != NULL) {
                 j = (j + 1) % newSize;
             }
@@ -87,7 +88,7 @@ Bucket *sht_newbucket(HashTable *table, char *key) {
     }
 
     // iterate until we find an empty bucket
-    unsigned long i = hash(key) % table->size;
+    size_t i = hash(key) % table->size;
     while (table->buckets[i].key != NULL) {
         i = (i + 1) % table->size;
     }
@@ -109,11 +110,11 @@ void sht_insert(HashTable *table, char *key, char *value) {
     size_t index = bucket->count;
     if (index == 0) {
         bucket->count = 1;
-        bucket->values = malloc(sizeof(char **));
+        bucket->values = malloc(sizeof(char *));
     } else {
         bucket->count++;
         bucket->values =
-            realloc(bucket->values, sizeof(char **) * bucket->count);
+            realloc(bucket->values, sizeof(char *) * bucket->count);
     }
     bucket->values[index] = copy_string(value);
 }

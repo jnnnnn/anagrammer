@@ -13,8 +13,7 @@ int main(void) {
     FILE *fp;
     char word[BUFFER_SIZE];
     char key[BUFFER_SIZE];
-    fp = fopen("../enable1.txt", "r");
-    int i = 3;
+    fopen_s(&fp, "../enable1.txt", "r");
     while (fgets(word, BUFFER_SIZE, (FILE *)fp) && word[0] > 0) {
         size_t length = strnlen(word, BUFFER_SIZE - 1);
         word[--length] = '\0';
@@ -29,7 +28,7 @@ int main(void) {
         fgets(word, BUFFER_SIZE, stdin);
         size_t length = strnlen(word, BUFFER_SIZE - 1);
         if (word[0] < 1 || length == 1) // empty string (including \n)
-            continue;
+            break;
         word[--length] = '\0'; // remove the \n
         qsort(word, length, sizeof(char), &cmpfunc);
         LookupResult result = sht_lookup(sortedletters, word);
