@@ -4,7 +4,7 @@ These programs will return anagrams for words typed in to stdin.
 
 The simplest one is python; it is designed to use many of the most common features of python while still being very simple to explain (or rewrite).
 
-Once the python one is understood, the subject becomes the differences between python and C++.
+Once the python one is understood, the subject becomes the differences between python and C++. Unfortunately, the problem does not really require the use of classes, so the major features of C++ goes undemonstrated.
 
 Finally, we rewrite it for a third time in plain C, introducing raw memory allocation, string handling, and implementing our own hash table.
 
@@ -24,8 +24,8 @@ The algorithm is:
 
 ## Languages
 
-| Language | Commands to build/run                      |
-| -------- | ------------------------------------------ |
-| Python   | `cd python; python server.py`              |
-| C++      | `cd c++; clang++ main.cpp -o main; ./main` |
-| C        | `cd c; clang                               |
+| Language | Commands to build/run                       |
+| -------- | ------------------------------------------- |
+| Python   | `cd python; python server.py`               |
+| C++      | `cd c++; clang++ main.cpp -o main; ./main`  |
+| C        | `cd c; clang main.c hash.c -o main; ./main` |
